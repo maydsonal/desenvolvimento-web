@@ -1,120 +1,210 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="utf-8">
     <title>Área do Editor - AtualizaWeb</title>
 </head>
+
 <body>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="objetos-cadastrados.html">Detalhes</a></li>
-        <li><a href="cadastro.html">Cadastro</a></li>
-        <li><a href="autor.html">Sobre o Autor</a></li>
-    </ul>
-</nav>
-
-<aside>
-    <h2>Atualiza</h2>
-    <p>Gestão Premium</p>
-
     <nav>
-        <a href="#">Inscritos</a>
-        <a href="#">Receita</a>
-        <a href="#">Newsletter</a>
-        <a href="#">Arquivo</a>
-        <a href="#">Configurações</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="objetos-cadastrados.html">Cadastro</a></li>
+        </ul>
     </nav>
 
-    <button>Nova Campanha</button>
+    <header>
+        <h1>Painel de Controle e Cadastros</h1>
+        <p>Gerencie assinantes, notícias e configurações do portal.</p>
+    </header>
 
-    <div>
-        <a href="#">Suporte</a>
-        <a href="#">Registros</a>
-    </div>
-</aside>
+    <hr>
 
-<main>
+    <main>
 
-<header>
-    <h1>Painel Administrativo</h1>
-    <nav>
-        <a href="#">Início</a>
-        <a href="#">Análise</a>
-        <a href="#">Editorial</a>
-        <a href="#">Biblioteca</a>
-    </nav>
-</header>
+        <section>
+            <h2>Inscritos</h2>
+            <p>Crie uma nova conta de leitor no sistema.</p>
 
-<section>
-    <h2>Lista de Inscritos</h2>
-    <p>Gerencie sua audiência e monitore conversões.</p>
+            <form action="salvar-assinante.php" method="POST">
+                <label>Nome Completo:<br>
+                    <input type="text" name="nome" placeholder="Ex: João Silva" required>
+                </label><br><br>
 
-    <button>Exportar CSV</button>
-</section>
+                <label>E-mail:<br>
+                    <input type="email" name="email" placeholder="seu@email.com" required>
+                </label><br><br>
 
-<section>
-    <h3>Resumo</h3>
-    <ul>
-        <li>Total de Inscritos: 12.482</li>
-        <li>Digital Premium: 4.210</li>
-        <li>Testes Ativos: 856</li>
-        <li>Taxa de Churn: 1.4%</li>
-    </ul>
-</section>
+                <label>Senha:<br>
+                    <input type="password" name="senha" placeholder="No mínimo 8 caracteres" required>
+                </label><br><br>
 
-<section>
-    <h3>Busca</h3>
-    <input type="text" placeholder="Nome, e-mail ou documento...">
-</section>
+                <label>Escolha o Tipo de Plano:<br>
+                    <select name="plano" required>
+                        <option value="">-- Selecione um plano --</option>
+                        <option value="gratuito">Plano Gratuito (Acesso Limitado)</option>
+                        <option value="digital_premium">Digital Premium (Acesso Total)</option>
+                        <option value="corporativo">Corporativo / Enterprise</option>
+                    </select>
+                </label><br><br>
 
-<section>
-    <table border="1" cellpadding="6">
-        <thead>
-            <tr>
-                <th>Inscrito</th>
-                <th>E-mail</th>
-                <th>Plano</th>
-                <th>Status</th>
-                <th>Data</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Adriano Cavalcanti (ID #88219)</td>
-                <td>adriano.c@email.com</td>
-                <td>Digital Premium</td>
-                <td>Ativo</td>
-                <td>12 Out, 2023</td>
-                <td>...</td>
-            </tr>
-            <tr>
-                <td>Beatriz Soares (ID #88220)</td>
-                <td>b.soares@portal.com.br</td>
-                <td>Plano Gratuito</td>
-                <td>Pendente</td>
-                <td>14 Out, 2023</td>
-                <td>...</td>
-            </tr>
-            <tr>
-                <td>Carlos Eduardo (ID #88221)</td>
-                <td>carlos.edu@web.org</td>
-                <td>Digital Premium</td>
-                <td>Cancelado</td>
-                <td>15 Out, 2023</td>
-                <td>...</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+                <label>
+                    <input type="checkbox" name="termos" required> Concordo com os termos e política de privacidade
+                </label><br><br>
 
-<footer>
-    <p>© 2024 Atualiza - Controle Editorial v4.2.0</p>
-</footer>
+                <button type="submit">Cadastrar Assinante</button>
+            </form>
+        </section>
 
-</main>
+        <hr>
+
+        <section>
+            <h2>Formulário: Cadastro de Notícias</h2>
+            <p>Identifique-se para publicar uma nova matéria no portal.</p>
+
+            <form action="salvar-noticia.php" method="POST">
+                
+                <fieldset>
+                    <legend><strong>Autenticação do Autor</strong></legend>
+                    <label>E-mail de Login:<br>
+                        <input type="email" name="autor_email" placeholder="seu@email.com" required>
+                    </label><br><br>
+                    
+                    <label>Senha:<br>
+                        <input type="password" name="autor_senha" required>
+                    </label>
+                </fieldset>
+                <br>
+
+                <fieldset>
+                    <legend><strong>Dados da Matéria</strong></legend>
+                    <label>Título da Notícia:<br>
+                        <input type="text" name="titulo" placeholder="Manchete principal" size="50" required>
+                    </label><br><br>
+
+                    <label>Categoria:<br>
+                        <select name="categoria" required>
+                            <option value="politica">Política</option>
+                            <option value="esportes">Esportes</option>
+                            <option value="gastronomia">Gastronomia</option>
+                            <option value="economia">Economia</option>
+                        </select>
+                    </label><br><br>
+
+                    <label>Nível de Acesso (Restrição):<br>
+                        <select name="nivel_acesso" required>
+                            <option value="publico">Público (Livre)</option>
+                            <option value="premium">Premium (Apenas Assinantes)</option>
+                        </select>
+                    </label><br><br>
+
+                    <label>Conteúdo da Notícia:<br>
+                        <textarea name="conteudo" rows="10" cols="60" placeholder="Digite o texto da notícia aqui..." required></textarea>
+                    </label>
+                </fieldset>
+                <br>
+
+                <button type="submit">Publicar Notícia</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section>
+            <h2>Painel Administrativo</h2>
+            <p>Área restrita para gerenciamento do administrador.</p>
+
+            <h3>Gerenciar Assinantes</h3>
+            <table border="1" cellpadding="6" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>E-mail</th>
+                        <th>Plano</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#88219</td>
+                        <td>Adriano Cavalcanti</td>
+                        <td>adriano.c@email.com</td>
+                        <td>Digital Premium</td>
+                        <td>
+                            <a href=""><button type="button">Editar</button></a>
+                            <a href=""><button type="button">Detalhes</button></a>
+                            <a href=""><button type="button">Apagar</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#88220</td>
+                        <td>Beatriz Soares</td>
+                        <td>b.soares@portal.com.br</td>
+                        <td>Plano Gratuito</td>
+                        <td>
+                            <a href=""><button type="button">Editar</button></a>
+                            <a href=""><button type="button">Detalhes</button></a>
+                            <a href=""><button type="button">Apagar</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <h3>Gerenciar Notícias Publicadas</h3>
+            <table border="1" cellpadding="6" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Título da Notícia</th>
+                        <th>Categoria</th>
+                        <th>Acesso</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#001</td>
+                        <td>Nova legislação ambiental promete transformar a matriz...</td>
+                        <td>Economia</td>
+                        <td>Público</td>
+                        <td>
+                            <a href=""><button type="button">Editar</button></a>
+                            <a href=""><button type="button">Detalhes</button></a>
+                            <a href=""><button type="button">Apagar</button></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#002</td>
+                        <td>Cidades inteligentes: como o 5G está mudando o transporte</td>
+                        <td>Política</td>
+                        <td>Premium</td>
+                        <td>
+                            <a href=""><button type="button">Editar</button></a>
+                            <a href=""><button type="button">Detalhes</button></a>
+                            <a href=""><button type="button">Apagar</button></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <hr>
+
+    <footer>
+        <h1>Sobre o Autor</h1>
+        <ul>
+            <li><a href="autor.html">Sobre o Autor</a></li>
+        </ul>
+        <p>© 2026 AtualizaWeb - Controle Editorial e Administrativo</p>
+    </footer>
 
 </body>
+
 </html>
