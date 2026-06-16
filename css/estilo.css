@@ -1,0 +1,59 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #222;
+}
+
+/* Estrutura básica */
+header, nav, section, footer {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+/* Navegação */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1a73e8;
+    font-weight: bold;
+}
+
+/* Títulos */
+h1, h2, h3 {
+    color: #333;
+}
+
+/* Imagens */
+img {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Formulários */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
